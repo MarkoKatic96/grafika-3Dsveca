@@ -1,0 +1,39 @@
+﻿<Window x:Class="AssimpSample.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="SharpGL WPF Application" Height="350" Width="525" 
+        xmlns:sharpGL="clr-namespace:SharpGL.WPF;assembly=SharpGL.WPF" KeyDown="Window_KeyDown">
+    <Grid Margin="0,29,0,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="18*"/>
+            <RowDefinition Height="12*"/>
+            <RowDefinition Height="263*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="11*"/>
+            <ColumnDefinition Width="64*"/>
+            <ColumnDefinition Width="177*"/>
+            <ColumnDefinition Width="38*"/>
+            <ColumnDefinition Width="227*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- The OpenGL control provides a OpenGL drawing surface. -->
+
+        <Label Content="Rotacija:" Margin="0,-23,18,11" Grid.ColumnSpan="2"/>
+        <TextBox Margin="46,-23,163,11" TextChanged="TextBox_TextChanged" Grid.ColumnSpan="2" Grid.Column="1"></TextBox>
+        <Label Content="Svetlosni izvor:" Margin="27,-22,61,10" Grid.Column="2"/>
+        <ComboBox Name="ColorKutija" Margin="116,-23,208,11" SelectionChanged="podesiBojuSvetla" Grid.ColumnSpan="3" Grid.Column="2">
+            <ComboBoxItem Content="Narandzasta" IsSelected="True"/>
+            <ComboBoxItem Content="Crvena"/>
+            <ComboBoxItem Content="Zelena"/>
+            <ComboBoxItem Content="Plava"/>
+        </ComboBox>  
+        <Label Content="Faktor skaliranja:" Margin="24,-22,103,4" Grid.Column="4"/>
+        <TextBox Margin="124,-22,5,11" TextChanged="TextBox_TextChangedS"  Grid.Column="4"></TextBox>
+        <sharpGL:OpenGLControl 
+            Name="openGLControl" OpenGLDraw="openGLControl_OpenGLDraw" 
+            OpenGLInitialized="openGLControl_OpenGLInitialized" Resized="openGLControl_Resized"
+            DrawFPS="True" RenderContextType="FBO" FrameRate="10" Grid.ColumnSpan="5" Grid.Row="1" Grid.RowSpan="2"/>
+
+    </Grid>
+</Window>
